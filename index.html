@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHORTCIRCUIT | Portfolio</title>
+    <title>SHORTCIRCUIT | Terminal</title>
     <style>
         :root {
             --bg: #050505;
             --card-bg: #111111;
-            --accent: #ff6600; /* Тот самый оранжевый */
+            --accent: #ff6600; 
             --text-main: #ffffff;
             --text-dim: #888888;
             --glow: rgba(255, 102, 0, 0.3);
@@ -24,9 +24,9 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
+            padding: 20px 0;
         }
 
-        /* Фоновый эффект сетки */
         body::before {
             content: "";
             position: fixed;
@@ -45,8 +45,8 @@
         }
 
         .header h1 {
-            font-size: 3rem;
-            letter-spacing: 5px;
+            font-size: 2.8rem;
+            letter-spacing: 4px;
             color: var(--accent);
             text-shadow: 0 0 20px var(--glow);
             margin-bottom: 5px;
@@ -54,12 +54,12 @@
         }
 
         .nicknames {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-dim);
             margin-bottom: 30px;
+            line-height: 1.5;
         }
 
-        /* Переключатели */
         .controls {
             display: flex;
             justify-content: center;
@@ -84,8 +84,7 @@
             box-shadow: 0 0 10px var(--glow);
         }
 
-        /* Контентные карточки */
-        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
         .tab-content.active { display: block; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -100,8 +99,20 @@
         }
 
         .info-item { margin-bottom: 15px; }
-        .info-label { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; display: block; margin-bottom: 3px; }
-        .info-value { font-size: 1.1rem; }
+        .info-item:last-child { margin-bottom: 0; }
+        
+        .info-label { 
+            color: var(--accent); 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            display: block; 
+            margin-bottom: 4px; 
+        }
+        
+        .info-value { 
+            font-size: 1rem; 
+            line-height: 1.4;
+        }
 
         .social-link {
             display: flex;
@@ -127,12 +138,13 @@
             position: fixed;
             top: 20px;
             right: 20px;
+            z-index: 10;
         }
 
         .divider {
             height: 1px;
             background: #333;
-            margin: 15px 0;
+            margin: 18px 0;
         }
     </style>
 </head>
@@ -145,55 +157,68 @@
 
     <div class="container">
         <div class="header">
-            <h1>ShortCircuit</h1>
-            <div class="nicknames">Sh0rtC1rQUIT / CYBERAPELSIN</div>
+            <h1>SHORTCIRCUIT</h1>
+            <div class="nicknames">Sh0rtC1rQUIT / short_cirquit / CYBERAPELSIN</div>
         </div>
 
         <div class="controls">
-            <button class="btn active" id="tab-about-btn" onclick="showTab('about')">ABOUT</button>
+            <button class="btn active" id="tab-about-btn" onclick="showTab('about')">MAIN INFO</button>
             <button class="btn" id="tab-socials-btn" onclick="showTab('socials')">SOCIALS</button>
         </div>
 
         <div id="about" class="tab-content active">
             <div class="card">
                 <div class="info-item">
-                    <span class="info-label" data-ru="Имя" data-en="Name">Имя</span>
-                    <span class="info-value">Karim Arslanov</span>
+                    <span class="info-label" data-ru="Пользователь" data-en="User">Пользователь</span>
+                    <span class="info-value">????? | 15 y.o.</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label" data-ru="Локация" data-en="Location">Локация</span>
                     <span class="info-value" data-ru="Россия, Казань" data-en="Russia, Kazan">Россия, Казань</span>
                 </div>
+                <div class="info-item">
+                    <span class="info-label" data-ru="Вайб" data-en="Vibe">Вайб</span>
+                    <span class="info-value" data-ru="Tech, Electronics" data-en="Tech, Electronics">Tech, Electronics</span>
+                </div>
+                
                 <div class="divider"></div>
+                
                 <div class="info-item">
-                    <span class="info-label" data-ru="Железо" data-en="Hardware">Железо</span>
-                    <span class="info-value">Pixel 10 Pro | XiaoXin 14 Pro</span>
+                    <span class="info-label" data-ru="Увлечения" data-en="Hobbies">Увлечения</span>
+                    <span class="info-value">Robotics - Arduino, ESP32 / IoT</span>
                 </div>
                 <div class="info-item">
-                    <span class="info-label" data-ru="Стек" data-en="Stack">Стек</span>
-                    <span class="info-value">Arduino, ESP32, IoT, КОМПАС-3D</span>
+                    <span class="info-label" data-ru="Инструменты" data-en="IDE / Tools">Инструменты</span>
+                    <span class="info-value">Arduino IDE / VS Code / КОМПАС-3D / Perplexity</span>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="info-item">
+                    <span class="info-label" data-ru="Основной ПК" data-en="Main PC">Основной ПК</span>
+                    <span class="info-value">Lenovo XiaoXin 14 pro 2024 (Win11)</span>
                 </div>
                 <div class="info-item">
-                    <span class="info-label" data-ru="Проекты" data-en="Projects">Проекты</span>
-                    <span class="info-value" data-ru="ЧПУ станок для ПП, FPV дроны (Meteor 75 Pro)" data-en="PCB CNC Machine, FPV Drones (Meteor 75 Pro)">ЧПУ станок для ПП, FPV дроны (Meteor 75 Pro)</span>
+                    <span class="info-label" data-ru="Мобильное устройство" data-en="Main Phone">Мобильное устройство</span>
+                    <span class="info-value">Pixel 10 Pro</span>
                 </div>
             </div>
         </div>
 
         <div id="socials" class="tab-content">
             <a href="https://t.me/short_circu1T" class="social-link" target="_blank">
-                <span>Telegram (Personal)</span>
+                <span>Telegram (Direct)</span>
                 <span style="color: var(--accent);">@short_circu1T</span>
             </a>
             <a href="https://t.me/short_cirquit" class="social-link" target="_blank">
-                <span>Main TG Channel</span>
-                <span style="color: var(--accent);">Join →</span>
+                <span>TG Channel</span>
+                <span style="color: var(--accent);">@short_cirquit</span>
             </a>
             <a href="https://tiktok.com/@short_cirquit" class="social-link" target="_blank">
                 <span>TikTok</span>
                 <span style="color: var(--accent);">@short_cirquit</span>
             </a>
-            <a href="https://steamcommunity.com/id/shortcircuit" class="social-link" target="_blank">
+            <a href="#" class="social-link" target="_blank">
                 <span>Steam</span>
                 <span>🎮</span>
             </a>
