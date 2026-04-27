@@ -3,252 +3,401 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bio page for SHORTCIRCUIT: robotics, electronics, Arduino, ESP32 and a PCB CNC project.">
-  <title>SHORTCIRCUIT</title>
+  <meta name="description" content="SHORTCIRCUIT bio page built on Material Web components for GitHub Pages.">
+  <meta name="theme-color" content="#f5efff">
+  <title>SHORTCIRCUIT / Material Web Bio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Flex:opsz,wght@8..144,500..1000&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&display=swap" rel="stylesheet">
+  <script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/",
+        "@material/material-color-utilities": "https://esm.run/@material/material-color-utilities"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css?v=20260427-2007">
+  <script type="module" src="script.js?v=20260427-2007"></script>
 </head>
 <body>
-  <div class="glow glow-one" aria-hidden="true"></div>
-  <div class="glow glow-two" aria-hidden="true"></div>
-  <main class="page">
-    <section class="hero surface">
-      <div class="hero-copy">
-        <p class="eyebrow">Material You / Tech Bio</p>
-        <div class="title-row">
-          <div class="avatar" aria-hidden="true">SC</div>
-          <div>
-            <p class="mono-line">aka short_cirquit</p>
-            <h1>SHORTCIRCUIT</h1>
-          </div>
+  <main class="page-shell">
+    <header class="top-bar surface surface-high">
+      <div class="brand-block">
+        <div class="brand-badge">
+          <span class="material-symbols-outlined" aria-hidden="true">widgets</span>
         </div>
-        <p class="lead">
-          15-летний технарь из Казани. Люблю электронику, робототехнику и проекты на стыке
-          кода, железа и аккуратной механики.
-        </p>
-        <div class="chip-row" aria-label="Main interests">
-          <span class="chip">Robotics</span>
-          <span class="chip">Arduino</span>
-          <span class="chip">ESP32 / IoT</span>
-          <span class="chip">Electronics</span>
-          <span class="chip">Tech vibe</span>
-        </div>
-        <div class="hero-actions">
-          <a class="button filled" href="https://t.me/short_circu1T" target="_blank" rel="noreferrer">Telegram</a>
-          <a class="button tonal" href="https://www.tiktok.com/@short_cirquit" target="_blank" rel="noreferrer">TikTok</a>
+        <div class="brand-copy">
+          <p class="kicker md-typescale-label-medium">Material Web Bio</p>
+          <p class="brand-line md-typescale-body-medium">short_cirquit / CYBERAPELSIN</p>
         </div>
       </div>
 
-      <aside class="hero-panel surface">
-        <p class="panel-kicker">Quick signal</p>
-        <div class="signal-grid">
-          <article class="signal-card">
-            <span class="signal-label">Location</span>
-            <strong>Kazan, Russia</strong>
-          </article>
-          <article class="signal-card">
-            <span class="signal-label">Age</span>
-            <strong>15</strong>
-          </article>
-          <article class="signal-card">
-            <span class="signal-label">Main tools</span>
-            <strong>Arduino IDE / VS Code / КОМПАС-3D / Perplexity</strong>
-          </article>
-          <article class="signal-card">
-            <span class="signal-label">Main socials</span>
-            <strong>Telegram / Steam</strong>
-          </article>
+      <div class="top-actions">
+        <md-filled-tonal-icon-button type="button" data-copy="@short_circu1T" aria-label="Copy Telegram handle">
+          <md-icon>content_copy</md-icon>
+        </md-filled-tonal-icon-button>
+        <md-text-button href="https://t.me/short_circu1T" target="_blank" has-icon>
+          <md-icon slot="icon">send</md-icon>
+          Telegram
+        </md-text-button>
+      </div>
+    </header>
+
+    <section class="hero-grid">
+      <article class="hero-panel surface hero-panel-primary">
+        <div class="hero-badges">
+          <span class="tonal-pill md-typescale-label-large">Kazan, Russia</span>
+          <span class="tonal-pill md-typescale-label-large">15 y/o</span>
         </div>
+
+        <p class="kicker md-typescale-label-medium">Sh0rtC1rQUIT / SHORTCIRCUIT / short_cirquit / CYBERAPELSIN</p>
+        <h1 class="display-lockup md-typescale-display-large">SHORTCIRCUIT</h1>
+        <p class="hero-text md-typescale-body-large">
+          15-летний технарь из Казани. Люблю проекты, где код, электроника и аккуратная механика
+          работают как одна система, а идея быстро превращается в реальный прототип.
+        </p>
+
+        <md-chip-set aria-label="Main interests" class="interest-set">
+          <md-suggestion-chip label="Robotics"></md-suggestion-chip>
+          <md-suggestion-chip label="Arduino"></md-suggestion-chip>
+          <md-suggestion-chip label="ESP32 / IoT"></md-suggestion-chip>
+          <md-suggestion-chip label="Electronics"></md-suggestion-chip>
+          <md-suggestion-chip label="PCB workflow"></md-suggestion-chip>
+        </md-chip-set>
+
+        <div class="hero-actions">
+          <md-filled-button href="https://t.me/short_circu1T" target="_blank" has-icon>
+            <md-icon slot="icon">send</md-icon>
+            Write in Telegram
+          </md-filled-button>
+          <md-outlined-button type="button" data-copy="@short_circu1T" has-icon>
+            <md-icon slot="icon">alternate_email</md-icon>
+            <span data-copy-label>Copy TG handle</span>
+          </md-outlined-button>
+        </div>
+      </article>
+
+      <aside class="hero-side">
+        <section class="surface side-panel">
+          <div class="panel-title-row">
+            <span class="material-symbols-outlined" aria-hidden="true">radar</span>
+            <div>
+              <p class="kicker md-typescale-label-medium">Quick signal</p>
+              <h2 class="md-typescale-title-large">Main snapshot</h2>
+            </div>
+          </div>
+
+          <md-list class="info-list">
+            <md-list-item>
+              <div slot="headline">Location</div>
+              <div slot="supporting-text">Kazan, Russia</div>
+              <md-icon slot="start">place</md-icon>
+            </md-list-item>
+            <md-list-item>
+              <div slot="headline">Main socials</div>
+              <div slot="supporting-text">Telegram / Steam</div>
+              <md-icon slot="start">forum</md-icon>
+            </md-list-item>
+            <md-list-item>
+              <div slot="headline">Main vibe</div>
+              <div slot="supporting-text">tech, electronics</div>
+              <md-icon slot="start">memory</md-icon>
+            </md-list-item>
+          </md-list>
+        </section>
+
+        <section class="surface side-panel">
+          <div class="panel-title-row">
+            <span class="material-symbols-outlined" aria-hidden="true">deployed_code</span>
+            <div>
+              <p class="kicker md-typescale-label-medium">Current orbit</p>
+              <h2 class="md-typescale-title-large">Tools and focus</h2>
+            </div>
+          </div>
+
+          <md-list class="info-list">
+            <md-list-item>
+              <div slot="headline">Robotics</div>
+              <div slot="supporting-text">physical systems and control</div>
+              <md-icon slot="start">smart_toy</md-icon>
+            </md-list-item>
+            <md-list-item>
+              <div slot="headline">ESP32 / IoT</div>
+              <div slot="supporting-text">controllers, sensors, connectivity</div>
+              <md-icon slot="start">developer_board</md-icon>
+            </md-list-item>
+            <md-list-item>
+              <div slot="headline">Arduino IDE / VS Code</div>
+              <div slot="supporting-text">main coding workflow</div>
+              <md-icon slot="start">code</md-icon>
+            </md-list-item>
+            <md-list-item>
+              <div slot="headline">КОМПАС-3D</div>
+              <div slot="supporting-text">mechanics and modeling</div>
+              <md-icon slot="start">precision_manufacturing</md-icon>
+            </md-list-item>
+          </md-list>
+        </section>
       </aside>
     </section>
 
-    <section class="tabs-shell surface">
-      <div class="tab-list" role="tablist" aria-label="Bio sections">
-        <button class="tab is-active" type="button" role="tab" aria-selected="true" aria-controls="overview-panel" id="overview-tab" data-tab-target="overview-panel">Обзор</button>
-        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="aliases-panel" id="aliases-tab" data-tab-target="aliases-panel">Ники</button>
-        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="project-panel" id="project-tab" data-tab-target="project-panel">PCB CNC</button>
-        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="contacts-panel" id="contacts-tab" data-tab-target="contacts-panel">Контакты</button>
-      </div>
+    <section class="tabs-wrap surface surface-high">
+      <md-tabs id="section-tabs" aria-label="Bio sections">
+        <md-primary-tab id="overview-tab" aria-controls="overview-panel" active>
+          <md-icon slot="icon">dashboard_customize</md-icon>
+          Обзор
+        </md-primary-tab>
+        <md-primary-tab id="aliases-tab" aria-controls="aliases-panel">
+          <md-icon slot="icon">badge</md-icon>
+          Ники
+        </md-primary-tab>
+        <md-primary-tab id="project-tab" aria-controls="project-panel">
+          <md-icon slot="icon">precision_manufacturing</md-icon>
+          PCB CNC
+        </md-primary-tab>
+        <md-primary-tab id="contacts-tab" aria-controls="contacts-panel">
+          <md-icon slot="icon">contact_page</md-icon>
+          Контакты
+        </md-primary-tab>
+      </md-tabs>
+    </section>
 
-      <div class="tab-panels">
-        <section class="tab-panel is-active" id="overview-panel" role="tabpanel" aria-labelledby="overview-tab">
-          <div class="overview-grid">
-            <article class="card">
-              <p class="card-kicker">Who I am</p>
-              <h2>Про железо и движение</h2>
-              <p>
-                Мне ближе всего проекты, где можно руками собрать систему, запустить код и увидеть,
-                как все это оживает в реальном мире.
-              </p>
-            </article>
-            <article class="card">
-              <p class="card-kicker">Focus</p>
-              <h2>Что нравится</h2>
-              <p>
-                Робототехника, Arduino, ESP32, IoT и все, что связано с электроникой, сенсорами,
-                приводами и аккуратной настройкой.
-              </p>
-            </article>
-            <article class="card">
-              <p class="card-kicker">Tools</p>
-              <h2>Чем пользуюсь</h2>
-              <p>
-                Arduino IDE, VS Code, КОМПАС-3D и Perplexity. Нравится, когда софт помогает
-                быстрее доводить идею до рабочего девайса.
-              </p>
-            </article>
-            <article class="card wide">
-              <p class="card-kicker">Vibe</p>
-              <h2>Tech, electronics, cyberapelsin energy</h2>
-              <p>
-                Люблю чистую подачу, уверенные формы, теплые accent-цвета и интерфейсы, которые
-                выглядят так, будто их собрали для реального проекта, а не просто для галочки.
-              </p>
-            </article>
-            <article class="card">
-              <p class="card-kicker">Online</p>
-              <h2>Где меня проще всего найти</h2>
-              <p>
-                Основные площадки: Telegram и Steam. Для быстрых апдейтов и контакта удобнее всего
-                Telegram.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="tab-panel" id="aliases-panel" role="tabpanel" aria-labelledby="aliases-tab" hidden>
-          <div class="panel-heading">
-            <h2>Если видишь один из этих ников, скорее всего это я</h2>
-            <p>Нажатие по карточке копирует ник в буфер.</p>
-          </div>
-          <div class="alias-grid">
-            <button class="alias-card" type="button" data-copy="Sh0rtC1rQUIT">
-              <strong>Sh0rtC1rQUIT</strong>
-              <span>classic handle</span>
-              <span class="copy-note" data-copy-label>tap to copy</span>
-            </button>
-            <button class="alias-card" type="button" data-copy="SHORTCIRCUIT">
-              <strong>SHORTCIRCUIT</strong>
-              <span>caps mode</span>
-              <span class="copy-note" data-copy-label>tap to copy</span>
-            </button>
-            <button class="alias-card" type="button" data-copy="short_cirquit">
-              <strong>short_cirquit</strong>
-              <span>main everyday alias</span>
-              <span class="copy-note" data-copy-label>tap to copy</span>
-            </button>
-            <button class="alias-card" type="button" data-copy="CYBERAPELSIN">
-              <strong>CYBERAPELSIN</strong>
-              <span>alt vibe name</span>
-              <span class="copy-note" data-copy-label>tap to copy</span>
-            </button>
-          </div>
-        </section>
-
-        <section class="tab-panel" id="project-panel" role="tabpanel" aria-labelledby="project-tab" hidden>
-          <article class="project-hero">
-            <p class="card-kicker">Featured project</p>
-            <h2>ЧПУ станок для производства печатных плат</h2>
-            <p>
-              Отдельный проект, в котором сходятся механика, управляющая электроника и желание
-              быстрее переходить от идеи к реальной PCB. Это не просто станок, а свой собственный
-              инструмент для прототипирования.
+    <section class="panel-stack">
+      <section class="tab-panel" id="overview-panel" role="tabpanel" aria-labelledby="overview-tab">
+        <div class="content-grid overview-grid">
+          <article class="surface section-card overview-lead">
+            <p class="kicker md-typescale-label-medium">How I work</p>
+            <h2 class="md-typescale-headline-small">
+              Собираю штуки, которые двигаются, меряют и помогают быстрее дойти до рабочего результата.
+            </h2>
+            <p class="md-typescale-body-large">
+              Больше всего нравится момент, когда идея перестает быть просто схемой или наброском и
+              превращается в систему с реальным поведением: с кодом, электроникой, настройкой и
+              механикой.
             </p>
-            <div class="project-tags" aria-label="Project focus">
-              <span class="stat-chip">PCB prototyping</span>
-              <span class="stat-chip">Motion control</span>
-              <span class="stat-chip">Calibration</span>
-              <span class="stat-chip">Electronics workflow</span>
+          </article>
+
+          <article class="surface section-card overview-vibe">
+            <p class="kicker md-typescale-label-medium">Main vibe</p>
+            <h2 class="wordmark">CYBER<br>APELSIN</h2>
+            <p class="md-typescale-body-large">
+              Tech energy, electronics focus и любовь к интерфейсам с характером.
+            </p>
+          </article>
+
+          <article class="surface section-card overview-method">
+            <p class="kicker md-typescale-label-medium">Method</p>
+            <h2 class="md-typescale-headline-small">Идея → схема → железо → калибровка</h2>
+            <p class="md-typescale-body-medium">
+              Люблю цикл, в котором можно быстро собрать решение, проверить поведение и сразу понять,
+              что именно нужно докрутить в следующей итерации.
+            </p>
+            <md-chip-set aria-label="Workflow">
+              <md-assist-chip label="Build"></md-assist-chip>
+              <md-assist-chip label="Test"></md-assist-chip>
+              <md-assist-chip label="Tune"></md-assist-chip>
+              <md-assist-chip label="Repeat"></md-assist-chip>
+            </md-chip-set>
+          </article>
+
+          <article class="surface section-card overview-tools">
+            <p class="kicker md-typescale-label-medium">Main tools</p>
+            <h2 class="md-typescale-headline-small">Arduino IDE, VS Code, КОМПАС-3D, Perplexity</h2>
+            <p class="md-typescale-body-medium">
+              Нравится стек, в котором можно быстро перейти от мысли к схеме, модели, коду и
+              физическому прототипу без лишней возни.
+            </p>
+          </article>
+
+          <article class="surface section-card overview-socials">
+            <p class="kicker md-typescale-label-medium">Where to find me</p>
+            <h2 class="md-typescale-headline-small">
+              Telegram для контакта, Steam как основной social hub, TikTok как публичный handle.
+            </h2>
+            <p class="md-typescale-body-medium">
+              Все собрано так, чтобы страницу можно было спокойно хостить как личный bio-screen.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="aliases-panel" role="tabpanel" aria-labelledby="aliases-tab" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="kicker md-typescale-label-medium">Identity set</p>
+            <h2 class="md-typescale-headline-small">Если видишь один из этих ников, скорее всего это я.</h2>
+          </div>
+          <p class="md-typescale-body-medium">Нажатие по кнопке копирует ник в буфер.</p>
+        </div>
+
+        <div class="content-grid alias-grid">
+          <article class="surface section-card alias-card">
+            <p class="kicker md-typescale-label-medium">classic</p>
+            <h3 class="md-typescale-title-large">Sh0rtC1rQUIT</h3>
+            <md-outlined-button type="button" data-copy="Sh0rtC1rQUIT" has-icon>
+              <md-icon slot="icon">content_copy</md-icon>
+              <span data-copy-label>Copy alias</span>
+            </md-outlined-button>
+          </article>
+
+          <article class="surface section-card alias-card">
+            <p class="kicker md-typescale-label-medium">caps mode</p>
+            <h3 class="md-typescale-title-large">SHORTCIRCUIT</h3>
+            <md-outlined-button type="button" data-copy="SHORTCIRCUIT" has-icon>
+              <md-icon slot="icon">content_copy</md-icon>
+              <span data-copy-label>Copy alias</span>
+            </md-outlined-button>
+          </article>
+
+          <article class="surface section-card alias-card">
+            <p class="kicker md-typescale-label-medium">everyday handle</p>
+            <h3 class="md-typescale-title-large">short_cirquit</h3>
+            <md-outlined-button type="button" data-copy="short_cirquit" has-icon>
+              <md-icon slot="icon">content_copy</md-icon>
+              <span data-copy-label>Copy alias</span>
+            </md-outlined-button>
+          </article>
+
+          <article class="surface section-card alias-card">
+            <p class="kicker md-typescale-label-medium">alt vibe</p>
+            <h3 class="md-typescale-title-large">CYBERAPELSIN</h3>
+            <md-outlined-button type="button" data-copy="CYBERAPELSIN" has-icon>
+              <md-icon slot="icon">content_copy</md-icon>
+              <span data-copy-label>Copy alias</span>
+            </md-outlined-button>
+          </article>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="project-panel" role="tabpanel" aria-labelledby="project-tab" hidden>
+        <article class="surface project-hero">
+          <p class="kicker md-typescale-label-medium">Featured build</p>
+          <h2 class="md-typescale-headline-medium">ЧПУ станок для производства печатных плат</h2>
+          <p class="md-typescale-body-large">
+            Это отдельный проект-платформа под быстрый переход от идеи к реальной PCB. В нем
+            сходятся механика, управляющая электроника, точность движения и желание ускорить
+            собственный цикл прототипирования.
+          </p>
+          <md-chip-set aria-label="Project focus" class="project-chip-set">
+            <md-filter-chip label="PCB prototyping" selected></md-filter-chip>
+            <md-filter-chip label="Motion control" selected></md-filter-chip>
+            <md-filter-chip label="Precision" selected></md-filter-chip>
+            <md-filter-chip label="Calibration" selected></md-filter-chip>
+          </md-chip-set>
+        </article>
+
+        <div class="workflow-grid">
+          <article class="surface workflow-step">
+            <p class="step-index md-typescale-label-large">01</p>
+            <h3 class="md-typescale-title-large">Concept</h3>
+          </article>
+          <article class="surface workflow-step">
+            <p class="step-index md-typescale-label-large">02</p>
+            <h3 class="md-typescale-title-large">Mechanics</h3>
+          </article>
+          <article class="surface workflow-step">
+            <p class="step-index md-typescale-label-large">03</p>
+            <h3 class="md-typescale-title-large">Control</h3>
+          </article>
+          <article class="surface workflow-step">
+            <p class="step-index md-typescale-label-large">04</p>
+            <h3 class="md-typescale-title-large">PCB iteration</h3>
+          </article>
+        </div>
+
+        <div class="content-grid project-grid">
+          <article class="surface section-card">
+            <p class="kicker md-typescale-label-medium">Why it matters</p>
+            <h3 class="md-typescale-headline-small">Меньше паузы между схемой и платой.</h3>
+            <p class="md-typescale-body-medium">
+              Такой станок нужен не ради самого станка, а ради скорости проверки идей, поиска ошибок
+              и более короткого пути к рабочему железу.
+            </p>
+          </article>
+
+          <article class="surface section-card">
+            <p class="kicker md-typescale-label-medium">Engineering focus</p>
+            <h3 class="md-typescale-headline-small">Повторяемость, точность, управление движением и калибровка.</h3>
+            <p class="md-typescale-body-medium">
+              Именно эти вещи делают проект реально интересным: не картинка, а инженерная система,
+              в которой мелкие настройки меняют конечный результат.
+            </p>
+          </article>
+
+          <article class="surface section-card">
+            <p class="kicker md-typescale-label-medium">Ready for later</p>
+            <h3 class="md-typescale-headline-small">Вкладка оставлена с запасом под развитие проекта.</h3>
+            <p class="md-typescale-body-medium">
+              Потом сюда можно добавить фото сборки, этапы разработки, тестовые платы,
+              калибровочные заметки и результаты реальной обработки.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="contacts-panel" role="tabpanel" aria-labelledby="contacts-tab" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="kicker md-typescale-label-medium">Reach out</p>
+            <h2 class="md-typescale-headline-small">Контакты уже собраны как готовый публичный экран.</h2>
+          </div>
+          <p class="md-typescale-body-medium">Можно просто заливать на GitHub Pages без сборки.</p>
+        </div>
+
+        <div class="content-grid contact-grid">
+          <article class="surface section-card contact-card">
+            <p class="kicker md-typescale-label-medium">Telegram</p>
+            <h3 class="md-typescale-headline-small">@short_circu1T</h3>
+            <p class="md-typescale-body-medium">Самый быстрый и основной способ связаться со мной.</p>
+            <div class="card-actions">
+              <md-filled-button href="https://t.me/short_circu1T" target="_blank" has-icon>
+                <md-icon slot="icon">open_in_new</md-icon>
+                Open
+              </md-filled-button>
+              <md-outlined-button type="button" data-copy="@short_circu1T" has-icon>
+                <md-icon slot="icon">content_copy</md-icon>
+                <span data-copy-label>Copy</span>
+              </md-outlined-button>
             </div>
           </article>
 
-          <div class="project-grid">
-            <article class="card">
-              <p class="card-kicker">Why</p>
-              <h2>Зачем это делать</h2>
-              <p>
-                Чтобы сократить путь от схемы до платы: быстрее тестировать идеи, находить ошибки
-                и собирать рабочие прототипы без лишних пауз.
-              </p>
-            </article>
-            <article class="card">
-              <p class="card-kicker">What makes it interesting</p>
-              <h2>Что в нем кайфово</h2>
-              <p>
-                Здесь все по-настоящему технично: точность, повторяемость, механика, контроль
-                движения и та часть инженерии, где мелочи реально решают результат.
-              </p>
-            </article>
-            <article class="card">
-              <p class="card-kicker">Future updates</p>
-              <h2>Что можно добавить потом</h2>
-              <p>
-                Фото сборки, этапы разработки, заметки по калибровке, используемую управляющую
-                систему и результаты тестов на реальных платах.
-              </p>
-            </article>
-          </div>
-        </section>
+          <article class="surface section-card contact-card">
+            <p class="kicker md-typescale-label-medium">TikTok</p>
+            <h3 class="md-typescale-headline-small">@short_cirquit</h3>
+            <p class="md-typescale-body-medium">Публичный handle для внешней стороны проектов и коротких апдейтов.</p>
+            <div class="card-actions">
+              <md-filled-tonal-button href="https://www.tiktok.com/@short_cirquit" target="_blank" has-icon>
+                <md-icon slot="icon">open_in_new</md-icon>
+                Open
+              </md-filled-tonal-button>
+              <md-outlined-button type="button" data-copy="@short_cirquit" has-icon>
+                <md-icon slot="icon">content_copy</md-icon>
+                <span data-copy-label>Copy</span>
+              </md-outlined-button>
+            </div>
+          </article>
 
-        <section class="tab-panel" id="contacts-panel" role="tabpanel" aria-labelledby="contacts-tab" hidden>
-          <div class="panel-heading">
-            <h2>Контакты и площадки</h2>
-            <p>Кнопки уже готовы для публичной страницы. Хостить можно прямо как статический сайт.</p>
-          </div>
-          <div class="contact-grid">
-            <article class="contact-card">
-              <div class="contact-meta">
-                <p class="card-kicker">Telegram</p>
-                <h3>@short_circu1T</h3>
-                <small>main contact</small>
-              </div>
-              <p>Самый быстрый способ написать или просто следить за тем, чем я сейчас занят.</p>
-              <div class="contact-actions">
-                <a class="button filled compact" href="https://t.me/short_circu1T" target="_blank" rel="noreferrer">Open</a>
-                <button class="button ghost compact" type="button" data-copy="@short_circu1T">
-                  <span data-copy-label>Copy handle</span>
-                </button>
-              </div>
-            </article>
-
-            <article class="contact-card">
-              <div class="contact-meta">
-                <p class="card-kicker">TikTok</p>
-                <h3>@short_cirquit</h3>
-                <small>public handle</small>
-              </div>
-              <p>Площадка для более заметной внешней стороны проектов, вайба и коротких апдейтов.</p>
-              <div class="contact-actions">
-                <a class="button tonal compact" href="https://www.tiktok.com/@short_cirquit" target="_blank" rel="noreferrer">Open</a>
-                <button class="button ghost compact" type="button" data-copy="@short_cirquit">
-                  <span data-copy-label>Copy handle</span>
-                </button>
-              </div>
-            </article>
-
-            <article class="contact-card">
-              <div class="contact-meta">
-                <p class="card-kicker">Steam</p>
-                <h3>Reserved slot</h3>
-                <small>main social hub</small>
-              </div>
-              <p>
-                Steam оставлен отдельной карточкой, чтобы потом можно было за минуту добавить
-                прямую ссылку на профиль без переделки дизайна.
-              </p>
-              <div class="contact-note">Link-ready card for future profile URL.</div>
-            </article>
-          </div>
-        </section>
-      </div>
+          <article class="surface section-card contact-card">
+            <p class="kicker md-typescale-label-medium">Steam</p>
+            <h3 class="md-typescale-headline-small">Main social slot</h3>
+            <p class="md-typescale-body-medium">
+              Карточка оставлена как место под ссылку на профиль, если захочешь потом добавить ее
+              без полной переделки макета.
+            </p>
+            <md-assist-chip label="Profile-ready card"></md-assist-chip>
+          </article>
+        </div>
+      </section>
     </section>
 
-    <footer class="footer">
-      <p>Built for GitHub Pages. Single-file structure, no build step, easy to customize later.</p>
+    <footer class="page-footer">
+      <p class="md-typescale-body-medium">Built with Material Web for GitHub Pages. Static, CDN-based, no build step.</p>
     </footer>
+
+    <md-fab id="contact-fab" label="Ping me" variant="tertiary" lowered aria-label="Open Telegram">
+      <md-icon slot="icon">send</md-icon>
+    </md-fab>
   </main>
 </body>
 </html>

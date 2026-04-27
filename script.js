@@ -1,75 +1,106 @@
-const tabs = Array.from(document.querySelectorAll("[data-tab-target]"));
-const panels = Array.from(document.querySelectorAll(".tab-panel"));
+import '@material/web/all.js';
+import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+import {argbFromHex, themeFromSourceColor, applyTheme} from '@material/material-color-utilities';
 
-function setActiveTab(targetId) {
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, typescaleStyles.styleSheet];
+
+const theme = themeFromSourceColor(argbFromHex('#6f5cff'));
+applyTheme(theme, {target: document.body, dark: false});
+
+const tabsElement = document.getElementById('section-tabs');
+const tabs = Array.from(document.querySelectorAll('md-primary-tab'));
+const panels = Array.from(document.querySelectorAll('.tab-panel'));
+const fab = document.getElementById('contact-fab');
+
+const panelIdByHash = {
+  overview: 'overview-panel',
+  aliases: 'aliases-panel',
+  project: 'project-panel',
+  contacts: 'contacts-panel'
+};
+
+const hashByPanelId = Object.fromEntries(
+  Object.entries(panelIdByHash).map(([hash, panelId]) => [panelId, hash])
+);
+
+function activatePanel(panelId, {updateHash = true} = {}) {
   tabs.forEach((tab) => {
-    const isActive = tab.dataset.tabTarget === targetId;
-    tab.classList.toggle("is-active", isActive);
-    tab.setAttribute("aria-selected", String(isActive));
-    tab.tabIndex = isActive ? 0 : -1;
+    const isActive = tab.getAttribute('aria-controls') === panelId;
+    if (isActive) {
+      tab.setAttribute('active', '');
+    } else {
+      tab.removeAttribute('active');
+    }
   });
 
   panels.forEach((panel) => {
-    const isActive = panel.id === targetId;
-    panel.classList.toggle("is-active", isActive);
-    panel.hidden = !isActive;
+    panel.hidden = panel.id !== panelId;
   });
+
+  if (updateHash) {
+    const nextHash = hashByPanelId[panelId];
+    if (nextHash) {
+      history.replaceState(null, '', `#${nextHash}`);
+    }
+  }
 }
 
-tabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => {
-    setActiveTab(tab.dataset.tabTarget);
-  });
+function panelIdFromHash(hash) {
+  return panelIdByHash[hash.replace(/^#/, '')] || 'overview-panel';
+}
 
-  tab.addEventListener("keydown", (event) => {
-    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
-      return;
-    }
+await customElements.whenDefined('md-tabs');
 
-    event.preventDefault();
-
-    let nextIndex = index;
-
-    if (event.key === "ArrowRight") {
-      nextIndex = (index + 1) % tabs.length;
-    } else if (event.key === "ArrowLeft") {
-      nextIndex = (index - 1 + tabs.length) % tabs.length;
-    } else if (event.key === "Home") {
-      nextIndex = 0;
-    } else if (event.key === "End") {
-      nextIndex = tabs.length - 1;
-    }
-
-    tabs[nextIndex].focus();
-    setActiveTab(tabs[nextIndex].dataset.tabTarget);
+tabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    activatePanel(tab.getAttribute('aria-controls'));
   });
 });
 
-setActiveTab("overview-panel");
+tabsElement.addEventListener('change', () => {
+  const activeTab =
+    tabs.find((tab) => tab.hasAttribute('active')) ??
+    tabs[tabsElement.activeTabIndex] ??
+    tabs[0];
 
-const copyControls = Array.from(document.querySelectorAll("[data-copy]"));
+  if (activeTab) {
+    activatePanel(activeTab.getAttribute('aria-controls'));
+  }
+});
+
+window.addEventListener('hashchange', () => {
+  activatePanel(panelIdFromHash(window.location.hash), {updateHash: false});
+});
+
+activatePanel(panelIdFromHash(window.location.hash), {updateHash: false});
+
+fab.addEventListener('click', () => {
+  window.open('https://t.me/short_circu1T', '_blank', 'noopener,noreferrer');
+});
+
+const copyControls = Array.from(document.querySelectorAll('[data-copy]'));
 
 copyControls.forEach((control) => {
-  const labelNode = control.querySelector("[data-copy-label]");
-  const defaultLabel = labelNode ? labelNode.textContent : "";
+  const labelNode = control.querySelector('[data-copy-label]');
+  const defaultLabel = labelNode ? labelNode.textContent : '';
 
-  control.addEventListener("click", async () => {
+  control.addEventListener('click', async () => {
     const value = control.dataset.copy;
 
     try {
       await navigator.clipboard.writeText(value);
-      control.classList.add("is-copied");
+      control.classList.add('is-copied');
       if (labelNode) {
-        labelNode.textContent = "copied";
+        labelNode.textContent = 'Copied';
       }
     } catch {
       if (labelNode) {
-        labelNode.textContent = "copy failed";
+        labelNode.textContent = 'Copy failed';
       }
     }
 
     window.setTimeout(() => {
-      control.classList.remove("is-copied");
+      control.classList.remove('is-copied');
       if (labelNode) {
         labelNode.textContent = defaultLabel;
       }
