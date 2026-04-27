@@ -1,246 +1,254 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHORTCIRCUIT | Terminal</title>
-    <style>
-        :root {
-            --bg: #050505;
-            --card-bg: #111111;
-            --accent: #ff6600; 
-            --text-main: #ffffff;
-            --text-dim: #888888;
-            --glow: rgba(255, 102, 0, 0.3);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'JetBrains Mono', monospace, sans-serif; }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-            padding: 20px 0;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(var(--card-bg) 1px, transparent 1px), linear-gradient(90deg, var(--card-bg) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-            opacity: 0.2;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 500px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
-            letter-spacing: 4px;
-            color: var(--accent);
-            text-shadow: 0 0 20px var(--glow);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        .nicknames {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            background: var(--card-bg);
-            border: 1px solid #333;
-            color: var(--text-dim);
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .btn.active {
-            border-color: var(--accent);
-            color: var(--accent);
-            box-shadow: 0 0 10px var(--glow);
-        }
-
-        .tab-content { display: none; animation: fadeIn 0.4s ease; }
-        .tab-content.active { display: block; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid #222;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: left;
-            margin-bottom: 15px;
-        }
-
-        .info-item { margin-bottom: 15px; }
-        .info-item:last-child { margin-bottom: 0; }
-        
-        .info-label { 
-            color: var(--accent); 
-            font-size: 0.75rem; 
-            text-transform: uppercase; 
-            display: block; 
-            margin-bottom: 4px; 
-        }
-        
-        .info-value { 
-            font-size: 1rem; 
-            line-height: 1.4;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: white;
-            margin-bottom: 10px;
-            border-left: 3px solid transparent;
-            transition: 0.3s;
-        }
-
-        .social-link:hover {
-            border-left-color: var(--accent);
-            background: #222;
-            transform: translateX(5px);
-        }
-
-        .lang-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10;
-        }
-
-        .divider {
-            height: 1px;
-            background: #333;
-            margin: 18px 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bio page for SHORTCIRCUIT: robotics, electronics, Arduino, ESP32 and a PCB CNC project.">
+  <title>SHORTCIRCUIT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-
-    <div class="lang-switch">
-        <button class="btn active" id="btn-ru" onclick="setLang('ru')">RU</button>
-        <button class="btn" id="btn-en" onclick="setLang('en')">EN</button>
-    </div>
-
-    <div class="container">
-        <div class="header">
+  <div class="glow glow-one" aria-hidden="true"></div>
+  <div class="glow glow-two" aria-hidden="true"></div>
+  <main class="page">
+    <section class="hero surface">
+      <div class="hero-copy">
+        <p class="eyebrow">Material You / Tech Bio</p>
+        <div class="title-row">
+          <div class="avatar" aria-hidden="true">SC</div>
+          <div>
+            <p class="mono-line">aka short_cirquit</p>
             <h1>SHORTCIRCUIT</h1>
-            <div class="nicknames">Sh0rtC1rQUIT / short_cirquit / CYBERAPELSIN</div>
+          </div>
         </div>
-
-        <div class="controls">
-            <button class="btn active" id="tab-about-btn" onclick="showTab('about')">MAIN INFO</button>
-            <button class="btn" id="tab-socials-btn" onclick="showTab('socials')">SOCIALS</button>
+        <p class="lead">
+          15-летний технарь из Казани. Люблю электронику, робототехнику и проекты на стыке
+          кода, железа и аккуратной механики.
+        </p>
+        <div class="chip-row" aria-label="Main interests">
+          <span class="chip">Robotics</span>
+          <span class="chip">Arduino</span>
+          <span class="chip">ESP32 / IoT</span>
+          <span class="chip">Electronics</span>
+          <span class="chip">Tech vibe</span>
         </div>
+        <div class="hero-actions">
+          <a class="button filled" href="https://t.me/short_circu1T" target="_blank" rel="noreferrer">Telegram</a>
+          <a class="button tonal" href="https://www.tiktok.com/@short_cirquit" target="_blank" rel="noreferrer">TikTok</a>
+        </div>
+      </div>
 
-        <div id="about" class="tab-content active">
-            <div class="card">
-                <div class="info-item">
-                    <span class="info-label" data-ru="Пользователь" data-en="User">Пользователь</span>
-                    <span class="info-value">????? | 15 y.o.</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label" data-ru="Локация" data-en="Location">Локация</span>
-                    <span class="info-value" data-ru="Россия, Казань" data-en="Russia, Kazan">Россия, Казань</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label" data-ru="Вайб" data-en="Vibe">Вайб</span>
-                    <span class="info-value" data-ru="Tech, Electronics" data-en="Tech, Electronics">Tech, Electronics</span>
-                </div>
-                
-                <div class="divider"></div>
-                
-                <div class="info-item">
-                    <span class="info-label" data-ru="Увлечения" data-en="Hobbies">Увлечения</span>
-                    <span class="info-value">Robotics - Arduino, ESP32 / IoT</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label" data-ru="Инструменты" data-en="IDE / Tools">Инструменты</span>
-                    <span class="info-value">Arduino IDE / VS Code / КОМПАС-3D / Perplexity</span>
-                </div>
+      <aside class="hero-panel surface">
+        <p class="panel-kicker">Quick signal</p>
+        <div class="signal-grid">
+          <article class="signal-card">
+            <span class="signal-label">Location</span>
+            <strong>Kazan, Russia</strong>
+          </article>
+          <article class="signal-card">
+            <span class="signal-label">Age</span>
+            <strong>15</strong>
+          </article>
+          <article class="signal-card">
+            <span class="signal-label">Main tools</span>
+            <strong>Arduino IDE / VS Code / КОМПАС-3D / Perplexity</strong>
+          </article>
+          <article class="signal-card">
+            <span class="signal-label">Main socials</span>
+            <strong>Telegram / Steam</strong>
+          </article>
+        </div>
+      </aside>
+    </section>
 
-                <div class="divider"></div>
+    <section class="tabs-shell surface">
+      <div class="tab-list" role="tablist" aria-label="Bio sections">
+        <button class="tab is-active" type="button" role="tab" aria-selected="true" aria-controls="overview-panel" id="overview-tab" data-tab-target="overview-panel">Обзор</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="aliases-panel" id="aliases-tab" data-tab-target="aliases-panel">Ники</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="project-panel" id="project-tab" data-tab-target="project-panel">PCB CNC</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="contacts-panel" id="contacts-tab" data-tab-target="contacts-panel">Контакты</button>
+      </div>
 
-                <div class="info-item">
-                    <span class="info-label" data-ru="Основной ПК" data-en="Main PC">Основной ПК</span>
-                    <span class="info-value">Lenovo XiaoXin 14 pro 2024 (Win11)</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label" data-ru="Мобильное устройство" data-en="Main Phone">Мобильное устройство</span>
-                    <span class="info-value">Pixel 10 Pro</span>
-                </div>
+      <div class="tab-panels">
+        <section class="tab-panel is-active" id="overview-panel" role="tabpanel" aria-labelledby="overview-tab">
+          <div class="overview-grid">
+            <article class="card">
+              <p class="card-kicker">Who I am</p>
+              <h2>Про железо и движение</h2>
+              <p>
+                Мне ближе всего проекты, где можно руками собрать систему, запустить код и увидеть,
+                как все это оживает в реальном мире.
+              </p>
+            </article>
+            <article class="card">
+              <p class="card-kicker">Focus</p>
+              <h2>Что нравится</h2>
+              <p>
+                Робототехника, Arduino, ESP32, IoT и все, что связано с электроникой, сенсорами,
+                приводами и аккуратной настройкой.
+              </p>
+            </article>
+            <article class="card">
+              <p class="card-kicker">Tools</p>
+              <h2>Чем пользуюсь</h2>
+              <p>
+                Arduino IDE, VS Code, КОМПАС-3D и Perplexity. Нравится, когда софт помогает
+                быстрее доводить идею до рабочего девайса.
+              </p>
+            </article>
+            <article class="card wide">
+              <p class="card-kicker">Vibe</p>
+              <h2>Tech, electronics, cyberapelsin energy</h2>
+              <p>
+                Люблю чистую подачу, уверенные формы, теплые accent-цвета и интерфейсы, которые
+                выглядят так, будто их собрали для реального проекта, а не просто для галочки.
+              </p>
+            </article>
+            <article class="card">
+              <p class="card-kicker">Online</p>
+              <h2>Где меня проще всего найти</h2>
+              <p>
+                Основные площадки: Telegram и Steam. Для быстрых апдейтов и контакта удобнее всего
+                Telegram.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="aliases-panel" role="tabpanel" aria-labelledby="aliases-tab" hidden>
+          <div class="panel-heading">
+            <h2>Если видишь один из этих ников, скорее всего это я</h2>
+            <p>Нажатие по карточке копирует ник в буфер.</p>
+          </div>
+          <div class="alias-grid">
+            <button class="alias-card" type="button" data-copy="Sh0rtC1rQUIT">
+              <strong>Sh0rtC1rQUIT</strong>
+              <span>classic handle</span>
+              <span class="copy-note" data-copy-label>tap to copy</span>
+            </button>
+            <button class="alias-card" type="button" data-copy="SHORTCIRCUIT">
+              <strong>SHORTCIRCUIT</strong>
+              <span>caps mode</span>
+              <span class="copy-note" data-copy-label>tap to copy</span>
+            </button>
+            <button class="alias-card" type="button" data-copy="short_cirquit">
+              <strong>short_cirquit</strong>
+              <span>main everyday alias</span>
+              <span class="copy-note" data-copy-label>tap to copy</span>
+            </button>
+            <button class="alias-card" type="button" data-copy="CYBERAPELSIN">
+              <strong>CYBERAPELSIN</strong>
+              <span>alt vibe name</span>
+              <span class="copy-note" data-copy-label>tap to copy</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="project-panel" role="tabpanel" aria-labelledby="project-tab" hidden>
+          <article class="project-hero">
+            <p class="card-kicker">Featured project</p>
+            <h2>ЧПУ станок для производства печатных плат</h2>
+            <p>
+              Отдельный проект, в котором сходятся механика, управляющая электроника и желание
+              быстрее переходить от идеи к реальной PCB. Это не просто станок, а свой собственный
+              инструмент для прототипирования.
+            </p>
+            <div class="project-tags" aria-label="Project focus">
+              <span class="stat-chip">PCB prototyping</span>
+              <span class="stat-chip">Motion control</span>
+              <span class="stat-chip">Calibration</span>
+              <span class="stat-chip">Electronics workflow</span>
             </div>
-        </div>
+          </article>
 
-        <div id="socials" class="tab-content">
-            <a href="https://t.me/short_circu1T" class="social-link" target="_blank">
-                <span>Telegram (Direct)</span>
-                <span style="color: var(--accent);">@short_circu1T</span>
-            </a>
-            <a href="https://t.me/short_cirquit" class="social-link" target="_blank">
-                <span>TG Channel</span>
-                <span style="color: var(--accent);">@short_cirquit</span>
-            </a>
-            <a href="https://tiktok.com/@short_cirquit" class="social-link" target="_blank">
-                <span>TikTok</span>
-                <span style="color: var(--accent);">@short_cirquit</span>
-            </a>
-            <a href="#" class="social-link" target="_blank">
-                <span>Steam</span>
-                <span>🎮</span>
-            </a>
-        </div>
-    </div>
+          <div class="project-grid">
+            <article class="card">
+              <p class="card-kicker">Why</p>
+              <h2>Зачем это делать</h2>
+              <p>
+                Чтобы сократить путь от схемы до платы: быстрее тестировать идеи, находить ошибки
+                и собирать рабочие прототипы без лишних пауз.
+              </p>
+            </article>
+            <article class="card">
+              <p class="card-kicker">What makes it interesting</p>
+              <h2>Что в нем кайфово</h2>
+              <p>
+                Здесь все по-настоящему технично: точность, повторяемость, механика, контроль
+                движения и та часть инженерии, где мелочи реально решают результат.
+              </p>
+            </article>
+            <article class="card">
+              <p class="card-kicker">Future updates</p>
+              <h2>Что можно добавить потом</h2>
+              <p>
+                Фото сборки, этапы разработки, заметки по калибровке, используемую управляющую
+                систему и результаты тестов на реальных платах.
+              </p>
+            </article>
+          </div>
+        </section>
 
-    <script>
-        function showTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.controls .btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            document.getElementById('tab-' + tabId + '-btn').classList.add('active');
-        }
+        <section class="tab-panel" id="contacts-panel" role="tabpanel" aria-labelledby="contacts-tab" hidden>
+          <div class="panel-heading">
+            <h2>Контакты и площадки</h2>
+            <p>Кнопки уже готовы для публичной страницы. Хостить можно прямо как статический сайт.</p>
+          </div>
+          <div class="contact-grid">
+            <article class="contact-card">
+              <div class="contact-meta">
+                <p class="card-kicker">Telegram</p>
+                <h3>@short_circu1T</h3>
+                <small>main contact</small>
+              </div>
+              <p>Самый быстрый способ написать или просто следить за тем, чем я сейчас занят.</p>
+              <div class="contact-actions">
+                <a class="button filled compact" href="https://t.me/short_circu1T" target="_blank" rel="noreferrer">Open</a>
+                <button class="button ghost compact" type="button" data-copy="@short_circu1T">
+                  <span data-copy-label>Copy handle</span>
+                </button>
+              </div>
+            </article>
 
-        function setLang(lang) {
-            document.querySelectorAll('#btn-ru, #btn-en').forEach(b => b.classList.remove('active'));
-            document.getElementById('btn-' + lang).classList.add('active');
-            
-            document.querySelectorAll('[data-ru]').forEach(el => {
-                el.innerText = el.getAttribute('data-' + lang);
-            });
-        }
-    </script>
+            <article class="contact-card">
+              <div class="contact-meta">
+                <p class="card-kicker">TikTok</p>
+                <h3>@short_cirquit</h3>
+                <small>public handle</small>
+              </div>
+              <p>Площадка для более заметной внешней стороны проектов, вайба и коротких апдейтов.</p>
+              <div class="contact-actions">
+                <a class="button tonal compact" href="https://www.tiktok.com/@short_cirquit" target="_blank" rel="noreferrer">Open</a>
+                <button class="button ghost compact" type="button" data-copy="@short_cirquit">
+                  <span data-copy-label>Copy handle</span>
+                </button>
+              </div>
+            </article>
+
+            <article class="contact-card">
+              <div class="contact-meta">
+                <p class="card-kicker">Steam</p>
+                <h3>Reserved slot</h3>
+                <small>main social hub</small>
+              </div>
+              <p>
+                Steam оставлен отдельной карточкой, чтобы потом можно было за минуту добавить
+                прямую ссылку на профиль без переделки дизайна.
+              </p>
+              <div class="contact-note">Link-ready card for future profile URL.</div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Built for GitHub Pages. Single-file structure, no build step, easy to customize later.</p>
+    </footer>
+  </main>
 </body>
 </html>
